@@ -1,2 +1,2 @@
 # Music-Store-
-The websites of Music Store is design for selling digital album
+The websites of Music Store is designed for selling digital album
