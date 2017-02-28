@@ -43,8 +43,15 @@ The websites of Music Store is designed for selling digital album
   Details.html
     <ol>
       <li>I'll use this page to show more detail's of album/artists</li>
-    </ol>
+     <li>meanwhile you can filter the informaton of artists and albums</li>
+    </ol>
   </li>
-  <li>Loading...</li>
+<li>
+Carts.html
+  <ol>
+    <li>It's the page about shopping cart</li>
+    <li>In this page you can check your carts and delete the commodity,add the number of commodity </li>
+  </ol>
+</li>
   
 <ol>
