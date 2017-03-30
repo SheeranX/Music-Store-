@@ -200,3 +200,61 @@ Order.html
 ----------------above are the tables I need to create----------
 
 -----The main tech I'll use is .NET MVC ------------
+<h3>Today is March 30</h3>
+<p style="color:green">Don't cry because it's over, smile because it happened.</p>
+
+The following are the Schedule I have made
+
+2 weeks edit the webpage
+1 week create the table and insert the sample data 
+2 weeks add the function 
+1 week write the graduation report 
+then....
+preparing for gradute 
+<p style="color:grey">(Actually I really look forward for a graduation travel with my best friend 
+but...
+There maybe have so many uncertain parameters
+Anyway I'll try.)</p>
+Problems and difficulties in life are common but it's the attitude that makes the difference.
+
++++++++++write down the problems I have met+++++++++++++
+//Add new data to database    Star:*
+ Solution :
+  there lots of ways to solve it 
+ Here is way I use:
+  use From request
+   Forexample:
+       [HttpPost]
+        public ActionResult Test(string id)
+        {
+            //id is the value from View 
+            //every from need a Name,method, action
+            return View();
+        }
+        
+  //Query data and input in View Star:**
+  I'm not good at LINQ so I use database Procedure to resolve 
+  Example:
+   public ActionResult Artist(int id) {
+            var artistInfo = new ArtistDetails();
+            //LINQ for artist
+            artistInfo.artistSingle = (from at in musicDB.tb_artist
+                                 where at.artistId == id
+                                 select at).Single();
+            //lamda expression of query album
+            artistInfo.albumModel = (from al in musicDB.tb_album
+                                     where al.artistId==id
+                                     select al
+                                         ).ToList();
+
+           //the procedure for artist
+            SqlParameter atId = new SqlParameter("@artistId",id);
+            artistInfo.artistModel = (musicDB.Database.SqlQuery<tb_artist>(
+                "exec artistProc @artistId",atId
+                )).ToList();
+            return View(artistInfo);
+        }
+        
+   
+  
+
