@@ -1,5 +1,9 @@
 # Music-Store-
 The websites of Music Store is designed for selling digital album
+Actually It's my graduation design 
+I want to make it perect ,also through this , I believe I can improve a lot
+
+
 <h3>WebSites Design</h3>
 <h4>In this websites I will make following functions</h4>
 <ol>
@@ -75,12 +79,124 @@ Order.html
       <li>password</li>
       <li>email</li>
       <li>phone</li>
-      <li>UserDetailID</li>
+      <li>createdate</li>
     </ol>
   </li>
-  <li>Loading............</li>
-  <li></li>
+  <li>
+    the userDetails tabl(tb_userDetails)
+    <ol>
+      <li>ID</li>
+      <li>userID(foreign key reference tb_user ID)</li>
+      <li>gender</li>
+      <li>birthday</li>
+      <li>location</li>
+      <li>profile</li>
+      <li>nickname</li>
+    </ol>
+  </li>
+  <li>
+    tb_album
+    <ul>
+       <li>albumId</li>
+       <li>albumName</li>
+       <li>genre</li>
+       <li>loaction</li>
+       <li>releaseDate</li>
+       <li>imgUrl</li>
+       <li>addDate</li>
+       <li>company</li>
+       <li>status</li>
+       <li>leftnumber</li>
+       <li>description</li>
+       <li>genreId</li>
+       <li>artistId</li>
+    </ul>
+  </li>
+   <li>
+    <ul>
+    tb_genre
+       <li>genreid</li>
+       <li>name</li>
+    </ul>
+   </li>
+    <li>
+    tb_artist
+      <ol>
+         <li>artistId</li>
+         <li>name</li>
+         <li>description</li>
+         <li>localId</li>
+      </ol>
+    </li>
+    <li>
+    tb_local
+      <ol>
+        <li>localId</li>
+        <li>name</li>
+      </ol>
+    </li>
+    <li>
+      <ol>
+      tb_song(evey album contains songs )
+         <li>songID</li>
+         <li>albumId</li>
+         <li>name</li>
+      </ol>
+    </li>
+    <li>
+     <ol>
+     tb_advice(every user have their advise)
+       <li>adviceId</li>
+       <li>userId</li>
+       <li>content</li>
+       <li>createdate</li>
+    </ol>
+    </li>
+  <li>
+  tb_cart
+    <ol>
+      <li>cartId</li>
+      <li>userId</li>
+    </ol>
+  </li>
+   <li>
+   tb_cartDetails
+    <ol>
+     <li>cartDetails</li>
+     <li>cartId</li>
+     <li>albumId</li>
+     <li>quantity</li>
+    </ol>
+    </li>
+    <li>
+    tb_collection
+      <ol>
+       <li>collectid</li>
+       <li>albumid</li>
+       <li>userid</li>
+      </ol>
+    </li>
+   </li>
+   <li>
+    <ol>
+    tb_order
+      <li>orderId</li>
+      <li>orderdate(the day you pay)</li>
+      <li>createDate(the day order created)</li>
+      <li>total</li>
+    </ol>
+   </li>
+   <ul>
+   tb_userDetails
+    <li>orderDetailsId</li>
+    <li>orderId</li>
+    <li>albumId</li>
+    <li>quantity</li>
+    <li>unitprice</li>
+   </ul>
+   <li>
+   </li>
 </ul>
+----------------above are the tables I need to create----------
 
-
-
+-----The main tech I'll use is .NET MVC ------------
