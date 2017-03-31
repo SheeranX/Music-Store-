@@ -255,6 +255,35 @@ Problems and difficulties in life are common but it's the attitude that makes th
             return View(artistInfo);
         }
         
-   
+ -----2017/3/31--------
+ Today I finished the Login and Register and fix the bug
+ 
+ in this part I use the following code:
+  That is a ajax function :
+  ======================================
+// 1:   $.ajax({
+	        type: "POST",
+	        url: "/Function/AjaxForLogin?str=" + $("#login_username").val(),
+	        dataType: 'text',
+	        beforeSend: function () {
+	            $("#loading").removeClass("hidden");
+	        },
+	        success: function (info) {
+	            $("#loading").addClass("hidden");
+	            if ("true" == info)
+	                $(".ok").removeClass("hidden");
+	            else
+	            {
+	                $(".ok").addClass("hidden");
+	                $("#userloginInfo").html("<font style='color:red' size=2><span class='glyphicon glyphicon-minus-sign'></span> 该账号未注册</font>");
+	            }
+	        }
+	    });
+  ====================================================
   
-
+//2:  int count = (from user in musicDB.tb_user
+                     where user.UserName == str || user.email == str || user.phone == str
+                     select user
+                         ).Count();
+============================================================
+It looks like quite easy , but to be honest It spends long time for me to resolve it
