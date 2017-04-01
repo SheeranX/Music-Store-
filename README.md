@@ -287,3 +287,79 @@ Problems and difficulties in life are common but it's the attitude that makes th
                          ).Count();
 ============================================================
 It looks like quite easy , but to be honest It spends long time for me to resolve it
+----2017/4/1------------
+Today I finished the collection.
+	Here is the confusion:
+	1.How to transfer JSON with MVC
+	2.How to define Gobal varible 
+Also I have learned two skills 
+	1..NET MVC filter with model
+	2..NET MVC filter with controler
+*****************************************************	
+	 /// <summary>
+    ///　权限拦截
+    /// </summary>
+    [AttributeUsage(AttributeTargets.Class | AttributeTargets.Method, AllowMultiple = false)]
+    public class AuthorizeFilterAttribute : ActionFilterAttribute
+    {
+        filterContextInfo fcinfo;
+        public override void OnActionExecuting(ActionExecutingContext filterContext)
+        {
+            fcinfo = new filterContextInfo(filterContext);
+           // fcinfo.actionName;//获取域名
+           // fcinfo.controllerName;//获取 controllerName 名称
+            bool isstate = true;
+            //islogin = false;
+            if (isstate)//如果满足
+            {
+                //逻辑代码
+                // filterContext.Result = new HttpUnauthorizedResult();//直接URL输入的页面地址跳转到登陆页  
+                // filterContext.Result = new RedirectResult("http://www.baidu.com");//也可以跳到别的站点
+                //filterContext.Result = new RedirectToRouteResult(new System.Web.Routing.RouteValueDictionary(new { Controller = "product", action = "Default" }));
+            }
+            else
+            {
+                filterContext.Result = new ContentResult { Content = @"抱歉,你不具有当前操作的权限！" };// 直接返回 return Content("抱歉,你不具有当前操作的权限！")
+            }
+
+        }
+        
+    }
+    public class filterContextInfo
+    {
+        public filterContextInfo(ActionExecutingContext filterContext)
+        {
+            #region 获取链接中的字符
+            // 获取域名
+            domainName = filterContext.HttpContext.Request.Url.Authority;
+
+            //获取模块名称
+            //  module = filterContext.HttpContext.Request.Url.Segments[1].Replace('/', ' ').Trim();
+
+            //获取 controllerName 名称
+            controllerName = filterContext.RouteData.Values["controller"].ToString();
+
+            //获取ACTION 名称
+            actionName = filterContext.RouteData.Values["action"].ToString();
+
+            #endregion
+        }
+        /// <summary>
+        /// 获取域名
+        /// </summary>
+        public string domainName { get; set; }
+        /// <summary>
+        /// 获取模块名称
+        /// </summary>
+        public string module { get; set; }
+        /// <summary>
+        /// 获取 controllerName 名称
+        /// </summary>
+        public string controllerName { get; set; }
+        /// <summary>
+        /// 获取ACTION 名称
+        /// </summary>
+        public string actionName { get; set; }
+
+    }
+    ********************************************************
